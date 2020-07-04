@@ -33,6 +33,14 @@
         "phpmetrics/phpmetrics": "^2.5",
         "nunomaduro/phpinsights": "^1.14.0"
     },
+    "autoload": {
+        "psr-4": {
+            "ItalyStrap\\Module\\": "src/"
+        },
+        "files": [
+            "functions/autoload.php"
+        ]
+    },
     "scripts": {
         "check": [
             ".\\vendor\\bin\\phpcs -p src"

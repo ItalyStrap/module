@@ -1,7 +1,7 @@
 {
-    "name": "italystrap/module",
+    "name": "italystrap/module-sample",
     "description": "Generic description",
-    "keywords": ["module"],
+    "keywords": [""],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -17,7 +17,7 @@
         "php" : ">=7.2"
     },
     "require-dev": {
-        "lucatume/wp-browser": "~2.2",
+        "lucatume/wp-browser": "^2.4",
         "lucatume/function-mocker-le": "^1.0",
         "codeception/c3": "2.*",
         "codeception/module-asserts": "^1.0",
@@ -28,7 +28,7 @@
         "codeception/module-cli": "^1.0",
         "codeception/util-universalframework": "^1.0",
         "brianium/paratest": "^4.0.*",
-        "italystrap/debug": "~2.0",
+        "italystrap/debug": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "phpcompatibility/php-compatibility": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
@@ -42,21 +42,36 @@
     },
     "autoload": {
         "psr-4": {
-            "ItalyStrap\\Module\\": "src/"
+            "ItalyStrap\\ModuleSample\\": "src/"
         },
         "files": [
             "functions/autoload.php"
         ]
     },
     "scripts": {
-        "check": [
-            ".\\vendor\\bin\\phpcs -p src"
-        ],
         "test": [
             "test"
         ],
+        "cs": [
+            "vendor\\bin\\phpcbf -p --ignore=./tests/_support/* ./src/ ./tests/ && vendor\\bin\\phpcs -p --ignore=./tests/_support/* ./src/ ./tests/"
+        ],
+        "analyze": [
+            "vendor\\bin\\phpstan analyze --level=max && vendor\\bin\\psalm"
+        ],
+        "unit": [
+            "vendor\\bin\\codecept run unit && vendor\\bin\\codecept run wpunit && vendor\\bin\\infection --threads=4"
+        ],
+        "bench": [
+            "vendor\\bin\\phpbench run --report=performance"
+        ],
         "metrics": [
-            "vendor/bin/phpmetrics --report-html='./tests/_output/report' ./src"
+            "vendor\\bin\\phpmetrics --report-html='./tests/_output/report' ./src"
+        ],
+        "insights": [
+            "vendor\\bin\\phpinsights"
+        ],
+        "clean": [
+            "vendor\\bin\\codecept clean"
         ]
     },
     "support"    : {

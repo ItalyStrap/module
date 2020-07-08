@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <psalm
         totallyTyped="false"
-        errorLevel="7"
+        errorLevel="1"
         resolveFromConfigFile="true"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://getpsalm.org/schema/config"
@@ -16,9 +16,9 @@
     <issueHandlers>
         <UndefinedFunction>
             <errorLevel type="suppress">
-                <referencedFunction name="get_transient"/>
-                <referencedFunction name="set_transient"/>
-                <referencedFunction name="delete_transient"/>
+<!--                <referencedFunction name="get_transient"/>-->
+<!--                <referencedFunction name="set_transient"/>-->
+<!--                <referencedFunction name="delete_transient"/>-->
             </errorLevel>
         </UndefinedFunction>
     </issueHandlers>

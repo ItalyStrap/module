@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Module
+ * Plugin Name: Module-Sample
  * Description:
  * Plugin URI: https://italystrap.com
  * Author: Enea Overclokk

@@ -1,5 +1,6 @@
 # Directory
 /vendor/
+/_others/
 
 # File
 *.local

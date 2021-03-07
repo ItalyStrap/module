@@ -27,18 +27,18 @@
         "codeception/module-filesystem": "^1.0",
         "codeception/module-cli": "^1.0",
         "codeception/util-universalframework": "^1.0",
-        "brianium/paratest": "^4.0.*",
-        "italystrap/debug": "^2.0",
+        "brianium/paratest": "^4.0",
         "squizlabs/php_codesniffer": "*",
         "phpcompatibility/php-compatibility": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-        "phpstan/phpstan": "^0.11.16",
-        "szepeviktor/phpstan-wordpress": "^0.3.0",
+        "phpstan/phpstan": "^0.12",
+        "szepeviktor/phpstan-wordpress": "^0.5",
         "vimeo/psalm": "^3.9",
         "phpbench/phpbench": "@dev",
         "infection/infection": "^0.15.3",
         "phpmetrics/phpmetrics": "^2.5",
-        "nunomaduro/phpinsights": "^1.14.0"
+        "nunomaduro/phpinsights": "^1.14.0",
+        "italystrap/debug": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -47,6 +47,13 @@
         "files": [
             "functions/autoload.php"
         ]
+    },
+    "provide": {
+        "psr/event-dispatcher-implementation": "1.0"
+    },
+    "suggest": {
+        "italystrap/empress": "Config driven for Auryn Injector the OOP way",
+        "inpsyde/objects-hooks-remover": "Package to remove WordPress hook callbacks that uses object methods or closures."
     },
     "scripts": {
         "test": [

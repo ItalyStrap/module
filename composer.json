@@ -1,7 +1,7 @@
 {
     "name": "italystrap/module-sample",
     "description": "Generic description",
-    "keywords": [""],
+    "keywords": ["key"],
     "type": "library",
     "license": "MIT",
     "authors": [

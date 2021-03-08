@@ -28,7 +28,7 @@ jobs:
 
     - name: mysql
       run: |
-        sudo systemctl start mysql
+        sudo systemctl start mysql.service
         mysql -v
 
 #    - name: Validate composer.json and composer.lock

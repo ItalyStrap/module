@@ -27,7 +27,9 @@ jobs:
       run: mkdir -p "/tmp/wordpress"
 
     - name: mysql
-      run: mysql -v
+      run: |
+        sudo systemctl start mysql
+        mysql -v
 
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict

@@ -26,6 +26,9 @@ jobs:
     - name: mkdir wp folder
       run: mkdir -p "/tmp/wordpress"
 
+    - name: mysql
+      run: mysql -v
+
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict
 

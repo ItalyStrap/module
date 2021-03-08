@@ -1,6 +1,6 @@
 name: Test
 env:
-  - WP_FOLDER="/tmp/wordpress"
+  - WP_FOLDER: "/tmp/wordpress"
 
 on:
   push:

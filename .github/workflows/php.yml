@@ -26,14 +26,10 @@ jobs:
       run: echo $HOME
 
     - name: mkdir wp folder
-    - run: mkdir -p $WP_FOLDER
-    - run: cd $WP_FOLDER
-    - run: pwd
+      run: mkdir -p $WP_FOLDER
 
-#    - name: mkdir wp folder
-#      run: |
-#        cd $WP_FOLDER
-#        pwd
+    - name: cd wp folder
+      run: cd $WP_FOLDER
 
     - name: Print working directory
       run: pwd

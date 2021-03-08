@@ -20,8 +20,11 @@ jobs:
     - name: Print working directory
       run: pwd
 
-    - name: Print working directory
+    - name: Echo HOME
       run: echo $HOME
+
+    - name: mkdir wp folder
+      run: mkdir -p "/tmp/wordpress"
 
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict

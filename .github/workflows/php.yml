@@ -27,7 +27,7 @@ jobs:
       run: mkdir -p "/tmp/wordpress"
 
     - name: mkdir wp folder
-      run: cd /tmp/wordpress
+      run: cd "/tmp/wordpress"
 
     - name: Print working directory
       run: pwd

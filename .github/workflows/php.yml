@@ -14,8 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate composer.json and composer.lock
+    - name: File list
       run: ls
+
+    - name: Print working directory
+      run: pwd
 
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict

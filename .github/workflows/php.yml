@@ -26,10 +26,15 @@ jobs:
     - name: mkdir wp folder
       run: mkdir -p "/tmp/wordpress"
 
-    - name: mysql
-      run: |
-        sudo systemctl start mysql.service
-        mysql -v
+    - name: Ls
+      run: ls
+
+
+
+#    - name: mysql
+#      run: |
+#        sudo systemctl start mysql.service
+#        mysql -v
 
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict

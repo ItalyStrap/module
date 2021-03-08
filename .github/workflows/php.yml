@@ -21,7 +21,7 @@ jobs:
       run: pwd
 
     - name: Print working directory
-      run: echo ${{$HOME}}
+      run: echo $HOME
 
 #    - name: Validate composer.json and composer.lock
 #      run: composer validate --strict

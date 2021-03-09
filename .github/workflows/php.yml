@@ -1,7 +1,7 @@
 name: Test
 env:
   WP_FOLDER: "/tmp/wordpress"
-  TOOLS_FOLDER: "/tools"
+  TOOLS_FOLDER: "~/tools"
 
 on:
   push:

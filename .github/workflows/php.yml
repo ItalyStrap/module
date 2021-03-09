@@ -29,7 +29,9 @@ jobs:
       run: mkdir -p ${{env.WP_FOLDER}}
 
     - name: cd wp folder
-      run: cd ${{env.WP_FOLDER}} && pwd
+      run: |
+        cd ${{env.WP_FOLDER}}
+        pwd
 
     - name: Print working directory
       run: pwd

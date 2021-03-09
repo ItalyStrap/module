@@ -6,6 +6,12 @@ env:
   DB_NAME: "test"
   TEST_DB_NAME: "wploader"
 
+  WP_URL: "http://wp.localhost"
+  WP_DOMAIN: "wp.localhost"
+  WP_TABLE_PREFIX: "wp_"
+  WP_ADMIN_USERNAME: "admin"
+  WP_ADMIN_PASSWORD: "admin"
+
 on:
   push:
     branches: [ master ]
@@ -55,6 +61,9 @@ jobs:
         mkdir -p ${{env.WP_FOLDER_PATH}}
         cd $WP_FOLDER_PATH
         wp core download --version=$WP_VERSION
+        wp config create --dbname="${{env.DB_NAME}}" --dbuser="root" --dbpass="root" --dbhost="127.0.0.1" --dbprefix="${{env.WP_TABLE_PREFIX}}"
+        wp core install --url="${{env.WP_URL}}" --title="Test" --admin_user="${{env.WP_ADMIN_USERNAME}}" --admin_password="${{env.WP_ADMIN_PASSWORD}}" --admin_email="admin@${{env.WP_DOMAIN}}" --skip-email
+        wp rewrite structure '/%postname%/' --hard
         ls
 
     - name: Ls

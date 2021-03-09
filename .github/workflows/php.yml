@@ -33,6 +33,7 @@ jobs:
       run: |
         mkdir ${{env.TOOLS_FOLDER}}
         wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P ${{env.TOOLS_FOLDER}}
+        chmod +x ${{env.TOOLS_FOLDER}}/wp-cli.phar && mv ${{env.TOOLS_FOLDER}}/wp-cli.phar ${{env.TOOLS_FOLDER}}/wp
         cd ${{env.TOOLS_FOLDER}}
         pwd
         ls

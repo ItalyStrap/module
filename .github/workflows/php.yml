@@ -46,7 +46,9 @@ jobs:
         echo $PATH
 
     - name: WP-CLI info from current working dir
-      run: wp --info
+      run: |
+        echo $PATH
+        wp --info
 
     - name: Ls
       run: ls

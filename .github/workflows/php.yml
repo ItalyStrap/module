@@ -44,6 +44,7 @@ jobs:
 
     - name: Install WordPress
       run: |
+        mkdir -p ${{env.WP_FOLDER_PATH}}
         cd $WP_FOLDER_PATH
         wp core download --version=$WP_VERSION
         ls

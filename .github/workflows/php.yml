@@ -1,7 +1,8 @@
 name: Test
 env:
-  WP_FOLDER: "/tmp/wordpress"
-  TOOLS_FOLDER: "~/tools"
+  WP_FOLDER_PATH: "/tmp/wordpress"
+  TOOLS_FOLDER_PATH: "~/tools"
+  WP_VERSION: "latest"
 
 on:
   push:
@@ -27,31 +28,25 @@ jobs:
       run: echo $HOME
 
 #    - name: mkdir wp folder
-#      run: mkdir -p ${{env.WP_FOLDER}}
+#      run: mkdir -p ${{env.WP_FOLDER_PATH}}
 
     - name: Install WP-CLI
       run: |
-        mkdir ${{env.TOOLS_FOLDER}}
+        mkdir ${{env.TOOLS_FOLDER_PATH}}
         # install wp-cli in the `tools` folder
-        wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P ${{env.TOOLS_FOLDER}}
-        chmod +x ${{env.TOOLS_FOLDER}}/wp-cli.phar && mv ${{env.TOOLS_FOLDER}}/wp-cli.phar ${{env.TOOLS_FOLDER}}/wp
-        # append the `tools` folder to the PATH
-        # export PATH=$PATH:${{env.TOOLS_FOLDER}}
-        echo ${{env.TOOLS_FOLDER}} >> $GITHUB_PATH
+        wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P ${{env.TOOLS_FOLDER_PATH}}
+        chmod +x ${{env.TOOLS_FOLDER_PATH}}/wp-cli.phar && mv ${{env.TOOLS_FOLDER_PATH}}/wp-cli.phar ${{env.TOOLS_FOLDER_PATH}}/wp
+        # prepend the `tools` folder to the PATH
+        # https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#adding-a-system-path
+        echo ${{env.TOOLS_FOLDER_PATH}} >> $GITHUB_PATH
         # prepend the `vendor/bin` folder to the PATH
-        #export PATH=vendor/bin:$PATH
         echo "vendor/bin" >> $GITHUB_PATH
-        #wp --info
-        #cd ${{env.TOOLS_FOLDER}}
-        # pwd
-        # ls
-        echo $PATH
 
-    - name: WP-CLI info from current working dir
+    - name: Install WordPress
       run: |
-        echo $PATH
-        wp --info
-        ls ${{env.TOOLS_FOLDER}}
+        cd $WP_FOLDER_PATH
+        wp core download --version=$WP_VERSION
+        ls
 
     - name: Ls
       run: ls

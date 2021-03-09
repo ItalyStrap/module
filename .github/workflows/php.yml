@@ -41,8 +41,8 @@ jobs:
         # prepend the `vendor/bin` folder to the PATH
         #export PATH=vendor/bin:$PATH
         echo "vendor/bin" >> $GITHUB_PATH
-        wp --info
-        cd ${{env.TOOLS_FOLDER}}
+        #wp --info
+        #cd ${{env.TOOLS_FOLDER}}
         # pwd
         # ls
         echo $PATH

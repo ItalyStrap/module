@@ -32,6 +32,8 @@ jobs:
       run: |
         cd ${{env.WP_FOLDER}}
         pwd
+        ls
+        echo "HELLO"
 
     - name: Print working directory
       run: pwd

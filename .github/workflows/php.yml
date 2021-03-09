@@ -39,7 +39,7 @@ jobs:
         export PATH=$PATH:${{env.TOOLS_FOLDER}}
         # prepend the `vendor/bin` folder to the PATH
         export PATH=vendor/bin:$PATH
-        wp -v
+        wp --info
         cd ${{env.TOOLS_FOLDER}}
         # pwd
         # ls

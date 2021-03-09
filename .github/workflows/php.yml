@@ -3,6 +3,8 @@ env:
   WP_FOLDER_PATH: "/tmp/wordpress"
   TOOLS_FOLDER_PATH: "~/tools"
   WP_VERSION: "latest"
+  DB_NAME: "test"
+  TEST_DB_NAME: "wploader"
 
 on:
   push:
@@ -19,16 +21,19 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Start database server
-      run: sudo /etc/init.d/mysql start
+      run: |
+        sudo /etc/init.d/mysql start
+        mysql -e "create database IF NOT EXISTS ${{env.DB_NAME}};" -uroot
+        mysql -e "create database IF NOT EXISTS ${{env.TEST_DB_NAME}};" -uroot
 
-    - name: File list
-      run: ls
-
-    - name: Print working directory
-      run: pwd
-
-    - name: Echo HOME
-      run: echo $HOME
+#    - name: File list
+#      run: ls
+#
+#    - name: Print working directory
+#      run: pwd
+#
+#    - name: Echo HOME
+#      run: echo $HOME
 
 #    - name: mkdir wp folder
 #      run: mkdir -p ${{env.WP_FOLDER_PATH}}

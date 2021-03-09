@@ -32,8 +32,11 @@ jobs:
     - name: cd wp folder
       run: |
         mkdir ${{env.TOOLS_FOLDER}}
+        # install wp-cli in the `tools` folder
         wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P ${{env.TOOLS_FOLDER}}
         chmod +x ${{env.TOOLS_FOLDER}}/wp-cli.phar && mv ${{env.TOOLS_FOLDER}}/wp-cli.phar ${{env.TOOLS_FOLDER}}/wp
+        # append the `tools` folder to the PATH
+        export PATH=$PATH:${{env.TOOLS_FOLDER}}
         cd ${{env.TOOLS_FOLDER}}
         pwd
         ls

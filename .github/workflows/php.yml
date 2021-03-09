@@ -1,6 +1,7 @@
 name: Test
 env:
   WP_FOLDER: "/tmp/wordpress"
+  TOOLS_FOLDER: "/tools"
 
 on:
   push:
@@ -25,12 +26,14 @@ jobs:
     - name: Echo HOME
       run: echo $HOME
 
-    - name: mkdir wp folder
-      run: mkdir -p ${{env.WP_FOLDER}}
+#    - name: mkdir wp folder
+#      run: mkdir -p ${{env.WP_FOLDER}}
 
     - name: cd wp folder
       run: |
-        cd ${{env.WP_FOLDER}}
+        mkdir -p ${{env.TOOLS_FOLDER}}
+        wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P ${{env.TOOLS_FOLDER}}
+        cd ${{env.TOOLS_FOLDER}}
         pwd
         ls
         echo "HELLO"

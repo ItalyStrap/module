@@ -29,7 +29,7 @@ jobs:
 #    - name: mkdir wp folder
 #      run: mkdir -p ${{env.WP_FOLDER}}
 
-    - name: cd wp folder
+    - name: Install WP-CLI
       run: |
         mkdir ${{env.TOOLS_FOLDER}}
         # install wp-cli in the `tools` folder
@@ -45,8 +45,8 @@ jobs:
         # ls
         echo $PATH
 
-    - name: Print working directory
-      run: pwd
+    - name: WP-CLI info from current working dir
+      run: wp --info
 
     - name: Ls
       run: ls

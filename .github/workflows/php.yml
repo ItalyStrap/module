@@ -37,10 +37,12 @@ jobs:
         chmod +x ${{env.TOOLS_FOLDER}}/wp-cli.phar && mv ${{env.TOOLS_FOLDER}}/wp-cli.phar ${{env.TOOLS_FOLDER}}/wp
         # append the `tools` folder to the PATH
         export PATH=$PATH:${{env.TOOLS_FOLDER}}
+        # prepend the `vendor/bin` folder to the PATH
+        export PATH=vendor/bin:$PATH
         cd ${{env.TOOLS_FOLDER}}
         pwd
         ls
-        echo "HELLO"
+        echo $PATH
 
     - name: Print working directory
       run: pwd

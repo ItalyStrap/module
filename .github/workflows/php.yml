@@ -41,8 +41,8 @@ jobs:
         export PATH=vendor/bin:$PATH
         wp -v
         cd ${{env.TOOLS_FOLDER}}
-#        pwd
-#        ls
+        # pwd
+        # ls
         echo $PATH
 
     - name: Print working directory

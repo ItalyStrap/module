@@ -50,7 +50,7 @@ jobs:
     - name: WP-CLI info from current working dir
       run: |
         echo $PATH
-        # wp --info
+        wp --info
         ls ${{env.TOOLS_FOLDER}}
 
     - name: Ls

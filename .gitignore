@@ -1,10 +1,10 @@
-# Directory
+# Composer
 /vendor/
-/_others/
 
-# File
-*.local
+# Codeception
 codeception.yml
+
+# Common File
+*.local
 *.lock
 *.phar
-infection.json.dist

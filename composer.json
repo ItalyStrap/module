@@ -14,31 +14,25 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php" : ">=7.2"
+        "php" : ">=7.4"
     },
     "require-dev": {
         "lucatume/wp-browser": "^2.4",
         "lucatume/function-mocker-le": "^1.0",
-        "codeception/c3": "2.*",
         "codeception/module-asserts": "^1.0",
-        "codeception/module-phpbrowser": "^1.0",
-        "codeception/module-webdriver": "^1.0",
-        "codeception/module-db": "^1.0",
-        "codeception/module-filesystem": "^1.0",
-        "codeception/module-cli": "^1.0",
-        "codeception/util-universalframework": "^1.0",
-        "brianium/paratest": "^4.0",
+
         "squizlabs/php_codesniffer": "*",
         "phpcompatibility/php-compatibility": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-        "phpstan/phpstan": "^0.12",
-        "szepeviktor/phpstan-wordpress": "^0.5",
+
+        "brianium/paratest": "^4.0",
+
         "vimeo/psalm": "^3.9",
         "phpbench/phpbench": "@dev",
         "infection/infection": "^0.15.3",
         "phpmetrics/phpmetrics": "^2.5",
         "nunomaduro/phpinsights": "^1.14.0",
-        "italystrap/debug": "^2.0"
+        "italystrap/debug": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -48,6 +42,12 @@
             "functions/autoload.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ItalyStrap\\ModuleSample\\Tests\\": "tests/src/",
+            "ItalyStrap\\ModuleSample\\Tests\\Unit": "tests/unit/"
+        }
+    },
     "provide": {
         "psr/event-dispatcher-implementation": "1.0"
     },
@@ -56,33 +56,42 @@
         "inpsyde/objects-hooks-remover": "Package to remove WordPress hook callbacks that uses object methods or closures."
     },
     "scripts": {
-        "test": [
-            "test"
-        ],
         "cs": [
-            "vendor\\bin\\phpcbf -p --ignore=./tests/_support/* ./src/ ./tests/ && vendor\\bin\\phpcs -p --ignore=./tests/_support/* ./src/ ./tests/"
+            "@php ./vendor/bin/phpcs -p"
+        ],
+        "cs:fix": [
+            "@php ./vendor/bin/phpcbf -p"
         ],
         "analyze": [
-            "vendor\\bin\\phpstan analyze --level=max && vendor\\bin\\psalm"
+            "@php ./vendor/bin/psalm"
         ],
         "unit": [
-            "vendor\\bin\\codecept run unit && vendor\\bin\\codecept run wpunit && vendor\\bin\\infection --threads=4"
+            "@php ./vendor/bin/codecept run unit"
         ],
-        "bench": [
-            "vendor\\bin\\phpbench run --report=performance"
+        "unit:debug": [
+            "@php ./vendor/bin/codecept run unit --debug"
         ],
-        "metrics": [
-            "vendor\\bin\\phpmetrics --report-html='./tests/_output/report' ./src"
-        ],
-        "insights": [
-            "vendor\\bin\\phpinsights"
+        "integration": [
+            "@php ./vendor/bin/codecept run wpunit"
         ],
         "clean": [
-            "vendor\\bin\\codecept clean"
+            "@php ./vendor/bin/codecept clean"
+        ],
+        "infection": [
+            "@php ./vendor/bin/infection --threads=4"
+        ],
+        "bench": [
+            "@php ./vendor/bin/phpbench run --report=performance"
+        ],
+        "metrics": [
+            "@php ./vendor/bin/phpmetrics --report-html='./tests/_output/report' ./src"
+        ],
+        "insights": [
+            "@php ./vendor/bin/phpinsights"
         ]
     },
     "support"    : {
-        "issues": "https://github.com/ItalyStrap/module/issues",
-        "source": "https://github.com/ItalyStrap/module"
+        "issues": "https://github.com/ItalyStrap/{module}/issues",
+        "source": "https://github.com/ItalyStrap/{module}"
     }
 }
